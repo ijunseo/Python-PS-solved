@@ -28,9 +28,10 @@ while q:
 				llst[nexr][nexc] = nextcst
 				q.append([nexr, nexc, nextcst])
 for i in range(n):
-	for j in range(m):
-		ans = max(llst[i][j], ans)
-		if lst[i][j] == 0:
-			print('-1')
-			sys.exit()
-print(ans)
+	if 0 in lst[i]:
+		print('-1')
+		sys.exit()
+mx = 0
+for i in range(n):
+	mx = max(mx, max(llst[i]))
+print(mx)
