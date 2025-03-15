@@ -11,7 +11,6 @@ for i in range(n):
 	for j in range(m):
 		if lst[i][j] == 1:
 			q.append([i, j, 0])
-llst = [[0] * m for _ in range(n)]
 ans = 0
 #solv
 dx = [1, -1, 0, 0]
@@ -25,13 +24,10 @@ while q:
 			if lst[nexr][nexc] == 0:
 				lst[nexr][nexc] = 1
 				nextcst = cst + 1
-				llst[nexr][nexc] = nextcst
+				ans = max(ans, nextcst)
 				q.append([nexr, nexc, nextcst])
 for i in range(n):
 	if 0 in lst[i]:
 		print('-1')
 		sys.exit()
-mx = 0
-for i in range(n):
-	mx = max(mx, max(llst[i]))
-print(mx)
+print(ans)
