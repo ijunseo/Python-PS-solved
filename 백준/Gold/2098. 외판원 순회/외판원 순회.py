@@ -1,7 +1,6 @@
 #基本操作
 import sys
 input = sys.stdin.readline
-from collections import defaultdict
 import math
 
 #input 
