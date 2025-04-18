@@ -6,8 +6,16 @@ sys.setrecursionlimit(10 ** 5)
 #input_and_segtree
 n, m , k = map(int, input().split())
 
-from math import ceil, log2
-piv = ceil(log2(n))
+piv = 0
+while True:
+    if n == 1:
+        piv = 1
+        break
+    if 1 << piv < n <= 1 << (piv + 1):
+        piv += 1
+        break
+    else:
+        piv += 1
 
 lst = [0] * (1 << piv + 1)
 
