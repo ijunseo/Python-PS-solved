@@ -1,7 +1,7 @@
 #基本操作
 import sys
 input = sys.stdin.readline
-sys.setrecursionlimit(10 ** 4)
+sys.setrecursionlimit(10 ** 5)
 
 #input_and_segtree
 n, m , k = map(int, input().split())
@@ -9,7 +9,7 @@ n, m , k = map(int, input().split())
 from math import ceil, log2
 piv = ceil(log2(n))
 
-lst = [0] * (n * 4)
+lst = [0] * (1 << piv + 1)
 
 st = 1 << piv
 for i in range(n):
@@ -17,6 +17,7 @@ for i in range(n):
 
 for i in range((1 << (piv + 1)) - 1, 1, -1):
     lst[i // 2] += lst[i]
+
 
 #solve 
 def find_ans(l, r, now_index, nowl, pls_num):
@@ -29,10 +30,9 @@ def find_ans(l, r, now_index, nowl, pls_num):
         return
     else:
         nn = pls_num // 2
-        if not nowl + nn - 1 < l:
-            find_ans(l, r, now_index * 2, nowl, nn)
-        if not r <= nowl + nn - 1:
-            find_ans(l, r, now_index * 2 + 1, nowl + nn, nn)
+        find_ans(l, r, now_index * 2, nowl, nn)
+        find_ans(l, r, now_index * 2 + 1, nowl + nn, nn)
+
 
 #output
 for _ in range(m + k):
