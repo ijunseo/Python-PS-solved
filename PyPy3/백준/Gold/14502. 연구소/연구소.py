@@ -13,7 +13,7 @@ for i in range(n):
 
 #solve
 def bfs(inp_virus, inp_map):
-	q = inp_virus
+	q = inp_virus[:]
 	dx = [1, -1, 0, 0]
 	dy = [0, 0, 1, -1]
 	while q:
@@ -39,8 +39,7 @@ def build(now_map, build_num):
 	global real_ans
 	if build_num == 3:
 		bfs_map = copy.deepcopy(now_map)
-		bfs_vir = copy.deepcopy(virus_locate)
-		real_ans = max(real_ans, bfs(bfs_vir, bfs_map))
+		real_ans = max(real_ans, bfs(virus_locate, bfs_map))
 		return
 	for i in range(n):
 		for j in range(m):
