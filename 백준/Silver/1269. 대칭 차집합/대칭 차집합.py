@@ -1,6 +1,11 @@
 import sys
 input = sys.stdin.readline
-
+'''
+差集合を計算する
+Pythonのsetｆでは
+-で差集合の計算ができるので
+計算に用いた
+'''
 n, m = map(int, input().split())
 
 lst1 = set(map(int, input().split()))
