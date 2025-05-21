@@ -23,6 +23,7 @@
 - Priority Queue
 - Deque
 - Segment Tree
+- TreeDP
   
   ....
 ##### BOJ proflie : [Link](https://solved.ac/profile/wer3350)
