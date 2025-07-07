@@ -1,5 +1,6 @@
 import sys
 from collections import deque
+import heapq
 import math
 input = sys.stdin.readline
 
@@ -16,9 +17,9 @@ while True:
 	lst = [list(map(int, input().split())) for _ in range(n)]
 	anslst = [[math.inf] * n for _ in range(n)]
 	
-	q = deque([[0, 0, lst[0][0]]])
+	q = [[0, 0, lst[0][0]]]
 	while q:
-		nowx, nowy, nowscore = q.popleft() 
+		nowx, nowy, nowscore = heapq.heappop(q) 
 		if anslst[nowx][nowy] <= nowscore:
 			continue
 		anslst[nowx][nowy] = nowscore
@@ -29,6 +30,6 @@ while True:
 				nextscore = nowscore + lst[nx][ny]
 				if anslst[nx][ny] <= nowscore:
 					continue
-				q.append([nx, ny, nextscore])
+				heapq.heappush(q, [nx, ny, nextscore])
 
 	print('Problem {}: {}'.format(piv, anslst[-1][-1]))
